@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Execution">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="testName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idStatus" Type="int" Nullable="false" />
+          <Property Name="idPhase" Type="int" Nullable="false" />
+          <Property Name="executionTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="executionDate" Type="date" Nullable="false" />
+          <Property Name="executionError" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="endDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Execution_Phase">
+          <End Role="Phase" Type="Self.Phase" Multiplicity="1" />
+          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phase">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="idPhase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Execution_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestReportModelStoreContainer">
+          <EntitySet Name="Execution" EntityType="Self.Execution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phase" EntityType="Self.Phase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Execution_Phase" Association="Self.FK_Execution_Phase">
+            <End Role="Phase" EntitySet="Phase" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Execution_Status" Association="Self.FK_Execution_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Execution">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="testName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idStatus" Type="Int32" Nullable="false" />
+          <Property Name="idPhase" Type="Int32" Nullable="false" />
+          <Property Name="executionTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="executionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="executionError" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Phase" Relationship="Self.FK_Execution_Phase" FromRole="Execution" ToRole="Phase" />
+          <NavigationProperty Name="Status" Relationship="TestReportModel.FK_Execution_Status" FromRole="Execution" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="endDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Execution" Relationship="Self.FK_Execution_Phase" FromRole="Phase" ToRole="Execution" />
+        </EntityType>
+        <Association Name="FK_Execution_Phase">
+          <End Role="Phase" Type="Self.Phase" Multiplicity="1" />
+          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phase">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="idPhase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Execution" EntityType="Self.Execution" />
+          <EntitySet Name="Phase" EntityType="Self.Phase" />
+          <AssociationSet Name="FK_Execution_Phase" Association="Self.FK_Execution_Phase">
+            <End Role="Phase" EntitySet="Phase" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <EntitySet Name="Status" EntityType="TestReportModel.Status" />
+          <AssociationSet Name="FK_Execution_Status" Association="TestReportModel.FK_Execution_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Execution" Relationship="TestReportModel.FK_Execution_Status" FromRole="Status" ToRole="Execution" />
+        </EntityType>
+        <Association Name="FK_Execution_Status">
+          <End Type="TestReportModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="TestReportModel.Execution" Role="Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestReportModelStoreContainer" CdmEntityContainer="TestReportEntities">
+          <EntitySetMapping Name="Execution">
+            <EntityTypeMapping TypeName="TestReportModel.Execution">
+              <MappingFragment StoreEntitySet="Execution">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="testName" ColumnName="testName" />
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="idPhase" ColumnName="idPhase" />
+                <ScalarProperty Name="executionTime" ColumnName="executionTime" />
+                <ScalarProperty Name="executionDate" ColumnName="executionDate" />
+                <ScalarProperty Name="executionError" ColumnName="executionError" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phase">
+            <EntityTypeMapping TypeName="TestReportModel.Phase">
+              <MappingFragment StoreEntitySet="Phase">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="TestReportModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

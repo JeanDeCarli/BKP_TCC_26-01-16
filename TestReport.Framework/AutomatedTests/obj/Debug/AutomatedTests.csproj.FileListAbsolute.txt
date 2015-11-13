@@ -1,0 +1,10 @@
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\AutomatedTests.dll
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\AutomatedTests.pdb
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.framework.dll
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.framework.xml
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\obj\Debug\AutomatedTests.dll
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\obj\Debug\AutomatedTests.pdb
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.core.dll
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.core.interfaces.dll
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.util.dll
+c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll

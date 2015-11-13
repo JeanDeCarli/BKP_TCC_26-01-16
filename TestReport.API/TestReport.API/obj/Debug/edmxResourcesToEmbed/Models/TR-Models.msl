@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestReportModelStoreContainer" CdmEntityContainer="TestReportEntities">
+    <EntitySetMapping Name="Execution">
+      <EntityTypeMapping TypeName="TestReportModel.Execution">
+        <MappingFragment StoreEntitySet="Execution">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="testName" ColumnName="testName" />
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+          <ScalarProperty Name="idPhase" ColumnName="idPhase" />
+          <ScalarProperty Name="executionTime" ColumnName="executionTime" />
+          <ScalarProperty Name="executionDate" ColumnName="executionDate" />
+          <ScalarProperty Name="executionError" ColumnName="executionError" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phase">
+      <EntityTypeMapping TypeName="TestReportModel.Phase">
+        <MappingFragment StoreEntitySet="Phase">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="TestReportModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
