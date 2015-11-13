@@ -8,3 +8,16 @@ c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\Automat
 c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.core.interfaces.dll
 c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\nunit.util.dll
 c:\users\jean.carli\documents\visual studio 2015\Projects\AutomatedTests\AutomatedTests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\AutomatedTests.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\AutomatedTests.pdb
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\Framework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.core.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.core.interfaces.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.framework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.util.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\Framework.pdb
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.framework.xml
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.csprojResolveAssemblyReference.cache
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.pdb

@@ -1,25 +1,30 @@
-﻿using NUnit.Framework;
+﻿
+using Framework;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutomatedTests
 {
     public class Tests
     {
+        private FrameworkMethods fm = new FrameworkMethods();
+
         #region SetUP and TearDown
         [SetUp]
         public void setup()
         {
-
+            fm.startTimer();
         }
 
         [TearDown]
         public void TearDown()
         {
-
+            fm.CaptureTestsInformation();
         }
         #endregion
 

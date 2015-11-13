@@ -1,0 +1,7 @@
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\Framework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\Framework.pdb
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\nunit.framework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\nunit.framework.xml
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\obj\Debug\Framework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\obj\Debug\Framework.pdb
