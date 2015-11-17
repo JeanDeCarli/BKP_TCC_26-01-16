@@ -16,7 +16,8 @@ namespace Framework
         public void CaptureTestsInformation()
         {
             var context =  TestContext.CurrentContext;
-            var currentTestResult = new TestResult(context.Test.FullName, context.Result.Status.ToString(), this.stopTimer(), "teste de erro");
+            var currentTestResult = new TestResult(context.Test.FullName, context.Result.Status.ToString(), this.stopTimer());
+            this.SaveTestResult(currentTestResult);
             //System.Diagnostics.Debug.Write(currentTestResult.testsName + " " + currentTestResult.testsStatus + " " + currentTestResult.testsTime + " " + currentTestResult.testsDate);
         }
 
@@ -29,6 +30,11 @@ namespace Framework
         {
             var time = watch.ElapsedMilliseconds;
             return time.ToString();
+        }
+
+        private void SaveTestResult(TestResult tr)
+        {
+            // salva no db.
         }
     }
 }
