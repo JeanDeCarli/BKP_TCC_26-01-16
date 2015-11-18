@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TestReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Execution">
           <Key>
             <PropertyRef Name="id" />
@@ -15,7 +22,7 @@
           <Property Name="idPhase" Type="int" Nullable="false" />
           <Property Name="executionTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="executionDate" Type="date" Nullable="false" />
-          <Property Name="executionError" Type="varchar" MaxLength="100" />
+          <Property Name="idProject" Type="int" />
         </EntityType>
         <EntityType Name="Phase">
           <Key>
@@ -25,6 +32,14 @@
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="startDate" Type="date" Nullable="false" />
           <Property Name="endDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idCompany" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -46,6 +61,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Execution_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="idProject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Execution_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
@@ -58,17 +85,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Project_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="idCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TestReportModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Execution" EntityType="Self.Execution" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Phase" EntityType="Self.Phase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Execution_Phase" Association="Self.FK_Execution_Phase">
             <End Role="Phase" EntitySet="Phase" />
             <End Role="Execution" EntitySet="Execution" />
           </AssociationSet>
+          <AssociationSet Name="FK_Execution_Project" Association="Self.FK_Execution_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
           <AssociationSet Name="FK_Execution_Status" Association="Self.FK_Execution_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Company" Association="Self.FK_Project_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Project" EntitySet="Project" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -88,6 +137,8 @@
           <Property Name="executionError" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Phase" Relationship="Self.FK_Execution_Phase" FromRole="Execution" ToRole="Phase" />
           <NavigationProperty Name="Status" Relationship="TestReportModel.FK_Execution_Status" FromRole="Execution" ToRole="Status" />
+          <Property Name="idProject" Type="Int32" />
+          <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Execution_Project" FromRole="Execution" ToRole="Project" />
         </EntityType>
         <EntityType Name="Phase">
           <Key>
@@ -123,6 +174,16 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="Execution" EntitySet="Execution" />
           </AssociationSet>
+          <EntitySet Name="Company" EntityType="TestReportModel.Company" />
+          <EntitySet Name="Project" EntityType="TestReportModel.Project" />
+          <AssociationSet Name="FK_Project_Company" Association="TestReportModel.FK_Project_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Execution_Project" Association="TestReportModel.FK_Execution_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Status">
           <Key>
@@ -145,6 +206,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Project_Company" FromRole="Company" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idCompany" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="TestReportModel.FK_Project_Company" FromRole="Project" ToRole="Company" />
+          <NavigationProperty Name="Execution" Relationship="TestReportModel.FK_Execution_Project" FromRole="Project" ToRole="Execution" />
+        </EntityType>
+        <Association Name="FK_Project_Company">
+          <End Type="TestReportModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="TestReportModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="idCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Execution_Project">
+          <End Type="TestReportModel.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="TestReportModel.Execution" Role="Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="idProject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -154,13 +257,13 @@
           <EntitySetMapping Name="Execution">
             <EntityTypeMapping TypeName="TestReportModel.Execution">
               <MappingFragment StoreEntitySet="Execution">
+                <ScalarProperty Name="idProject" ColumnName="idProject" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="testName" ColumnName="testName" />
                 <ScalarProperty Name="idStatus" ColumnName="idStatus" />
                 <ScalarProperty Name="idPhase" ColumnName="idPhase" />
                 <ScalarProperty Name="executionTime" ColumnName="executionTime" />
                 <ScalarProperty Name="executionDate" ColumnName="executionDate" />
-                <ScalarProperty Name="executionError" ColumnName="executionError" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -178,6 +281,23 @@
             <EntityTypeMapping TypeName="TestReportModel.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="TestReportModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="TestReportModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="idCompany" ColumnName="idCompany" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

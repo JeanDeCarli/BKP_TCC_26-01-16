@@ -21,3 +21,5 @@ C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.csprojResolveAssemblyReference.cache
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.dll
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.pdb
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\EntityFramework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\EntityFramework.xml

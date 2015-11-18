@@ -10,6 +10,10 @@
         <AssociationConnector Association="TestReportModel.FK_Execution_Phase" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TestReportModel.Status" Width="1.5" PointX="0.5" PointY="1.5" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Status" />
+        <EntityTypeShape EntityType="TestReportModel.Company" Width="1.5" PointX="0.5" PointY="4.75" />
+        <EntityTypeShape EntityType="TestReportModel.Project" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="TestReportModel.FK_Project_Company" />
+        <AssociationConnector Association="TestReportModel.FK_Execution_Project" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

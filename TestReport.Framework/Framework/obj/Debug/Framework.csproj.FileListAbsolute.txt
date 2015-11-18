@@ -5,3 +5,8 @@ C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\nunit.fram
 C:\DotNetProjects\TestReport\TestReport.Framework\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache
 C:\DotNetProjects\TestReport\TestReport.Framework\Framework\obj\Debug\Framework.dll
 C:\DotNetProjects\TestReport\TestReport.Framework\Framework\obj\Debug\Framework.pdb
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\Framework.dll.config
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\EntityFramework.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\EntityFramework.SqlServer.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\EntityFramework.xml
+C:\DotNetProjects\TestReport\TestReport.Framework\Framework\bin\Debug\EntityFramework.SqlServer.xml

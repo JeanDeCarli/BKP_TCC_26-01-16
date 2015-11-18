@@ -21,8 +21,10 @@ namespace TestReport.API.Models
         public System.TimeSpan executionTime { get; set; }
         public System.DateTime executionDate { get; set; }
         public string executionError { get; set; }
+        public Nullable<int> idProject { get; set; }
     
         public virtual Phase Phase { get; set; }
         public virtual Status Status { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

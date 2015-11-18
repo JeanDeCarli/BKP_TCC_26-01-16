@@ -18,8 +18,6 @@ namespace TestReport.API.Models
         public TestReportEntities()
             : base("name=TestReportEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -30,5 +28,7 @@ namespace TestReport.API.Models
         public virtual DbSet<Execution> Execution { get; set; }
         public virtual DbSet<Phase> Phase { get; set; }
         public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<Project> Project { get; set; }
     }
 }
