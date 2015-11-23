@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TestReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Execution">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="testName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="idStatus" Type="Int32" Nullable="false" />
-    <Property Name="idPhase" Type="Int32" Nullable="false" />
-    <Property Name="executionTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="executionDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="executionError" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Phase" Relationship="Self.FK_Execution_Phase" FromRole="Execution" ToRole="Phase" />
-    <NavigationProperty Name="Status" Relationship="TestReportModel.FK_Execution_Status" FromRole="Execution" ToRole="Status" />
-  </EntityType>
   <EntityType Name="Phase">
     <Key>
       <PropertyRef Name="id" />
@@ -22,28 +8,26 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="endDate" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Execution" Relationship="Self.FK_Execution_Phase" FromRole="Phase" ToRole="Execution" />
+    <NavigationProperty Name="Execution" Relationship="TestReportModel.FK_Execution_Phase" FromRole="Phase" ToRole="Execution" />
   </EntityType>
-  <Association Name="FK_Execution_Phase">
-    <End Role="Phase" Type="Self.Phase" Multiplicity="1" />
-    <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Phase">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Execution">
-        <PropertyRef Name="idPhase" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="TestReportEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Execution" EntityType="Self.Execution" />
     <EntitySet Name="Phase" EntityType="Self.Phase" />
-    <AssociationSet Name="FK_Execution_Phase" Association="Self.FK_Execution_Phase">
+    <EntitySet Name="Status" EntityType="TestReportModel.Status" />
+    <EntitySet Name="Company" EntityType="TestReportModel.Company" />
+    <EntitySet Name="Project" EntityType="TestReportModel.Project" />
+    <AssociationSet Name="FK_Project_Company" Association="TestReportModel.FK_Project_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <EntitySet Name="Execution" EntityType="TestReportModel.Execution" />
+    <AssociationSet Name="FK_Execution_Phase" Association="TestReportModel.FK_Execution_Phase">
       <End Role="Phase" EntitySet="Phase" />
       <End Role="Execution" EntitySet="Execution" />
     </AssociationSet>
-    <EntitySet Name="Status" EntityType="TestReportModel.Status" />
+    <AssociationSet Name="FK_Execution_Project" Association="TestReportModel.FK_Execution_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Execution" EntitySet="Execution" />
+    </AssociationSet>
     <AssociationSet Name="FK_Execution_Status" Association="TestReportModel.FK_Execution_Status">
       <End Role="Status" EntitySet="Status" />
       <End Role="Execution" EntitySet="Execution" />
@@ -58,6 +42,75 @@
     <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Execution" Relationship="TestReportModel.FK_Execution_Status" FromRole="Status" ToRole="Execution" />
   </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Project_Company" FromRole="Company" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idCompany" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="TestReportModel.FK_Project_Company" FromRole="Project" ToRole="Company" />
+    <NavigationProperty Name="Execution" Relationship="TestReportModel.FK_Execution_Project" FromRole="Project" ToRole="Execution" />
+  </EntityType>
+  <Association Name="FK_Project_Company">
+    <End Type="TestReportModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="TestReportModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="idCompany" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Execution">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="testName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idStatus" Type="Int32" Nullable="false" />
+    <Property Name="idPhase" Type="Int32" Nullable="false" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="executionTime" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="executionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Phase" Relationship="TestReportModel.FK_Execution_Phase" FromRole="Execution" ToRole="Phase" />
+    <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Execution_Project" FromRole="Execution" ToRole="Project" />
+    <NavigationProperty Name="Status" Relationship="TestReportModel.FK_Execution_Status" FromRole="Execution" ToRole="Status" />
+  </EntityType>
+  <Association Name="FK_Execution_Phase">
+    <End Type="TestReportModel.Phase" Role="Phase" Multiplicity="1" />
+    <End Type="TestReportModel.Execution" Role="Execution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phase">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Execution">
+        <PropertyRef Name="idPhase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Execution_Project">
+    <End Type="TestReportModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="TestReportModel.Execution" Role="Execution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Execution">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Execution_Status">
     <End Type="TestReportModel.Status" Role="Status" Multiplicity="1" />
     <End Type="TestReportModel.Execution" Role="Execution" Multiplicity="*" />

@@ -19,7 +19,6 @@ namespace TestReport.API.Controllers
         // GET: api/Executions
         public IQueryable<Execution> GetExecution()
         {
-            Execution exec = new Execution();
             return db.Execution;
         }
 
@@ -81,7 +80,22 @@ namespace TestReport.API.Controllers
             }
 
             db.Execution.Add(execution);
-            db.SaveChanges();
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (ExecutionExists(execution.id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = execution.id }, execution);
         }

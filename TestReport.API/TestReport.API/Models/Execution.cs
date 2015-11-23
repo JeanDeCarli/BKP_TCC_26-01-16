@@ -18,13 +18,12 @@ namespace TestReport.API.Models
         public string testName { get; set; }
         public int idStatus { get; set; }
         public int idPhase { get; set; }
-        public System.TimeSpan executionTime { get; set; }
+        public int idProject { get; set; }
+        public string executionTime { get; set; }
         public System.DateTime executionDate { get; set; }
-        public string executionError { get; set; }
-        public Nullable<int> idProject { get; set; }
     
         public virtual Phase Phase { get; set; }
-        public virtual Status Status { get; set; }
         public virtual Project Project { get; set; }
+        public virtual Status Status { get; set; }
     }
 }

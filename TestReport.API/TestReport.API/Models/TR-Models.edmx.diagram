@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="66143cca73b7409a850fb88b3599a34f" Name="Diagram1">
-        <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TestReportModel.Phase" Width="1.5" PointX="5.5" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="TestReportModel.FK_Execution_Phase" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TestReportModel.Status" Width="1.5" PointX="0.5" PointY="1.5" />
-        <AssociationConnector Association="TestReportModel.FK_Execution_Status" />
         <EntityTypeShape EntityType="TestReportModel.Company" Width="1.5" PointX="0.5" PointY="4.75" />
         <EntityTypeShape EntityType="TestReportModel.Project" Width="1.5" PointX="3" PointY="4.75" />
         <AssociationConnector Association="TestReportModel.FK_Project_Company" />
+        <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="3.125" PointY="1.375" />
+        <AssociationConnector Association="TestReportModel.FK_Execution_Phase" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Project" />
+        <AssociationConnector Association="TestReportModel.FK_Execution_Status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

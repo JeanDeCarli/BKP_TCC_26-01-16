@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TestReportModelStoreContainer" CdmEntityContainer="TestReportEntities">
-    <EntitySetMapping Name="Execution">
-      <EntityTypeMapping TypeName="TestReportModel.Execution">
-        <MappingFragment StoreEntitySet="Execution">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="testName" ColumnName="testName" />
-          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
-          <ScalarProperty Name="idPhase" ColumnName="idPhase" />
-          <ScalarProperty Name="executionTime" ColumnName="executionTime" />
-          <ScalarProperty Name="executionDate" ColumnName="executionDate" />
-          <ScalarProperty Name="executionError" ColumnName="executionError" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Phase">
       <EntityTypeMapping TypeName="TestReportModel.Phase">
         <MappingFragment StoreEntitySet="Phase">
@@ -29,6 +16,36 @@
         <MappingFragment StoreEntitySet="Status">
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="TestReportModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project">
+      <EntityTypeMapping TypeName="TestReportModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="idCompany" ColumnName="idCompany" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Execution">
+      <EntityTypeMapping TypeName="TestReportModel.Execution">
+        <MappingFragment StoreEntitySet="Execution">
+          <ScalarProperty Name="executionDate" ColumnName="executionDate" />
+          <ScalarProperty Name="executionTime" ColumnName="executionTime" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idPhase" ColumnName="idPhase" />
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+          <ScalarProperty Name="testName" ColumnName="testName" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
