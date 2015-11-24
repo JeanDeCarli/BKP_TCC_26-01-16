@@ -15,9 +15,9 @@
     <Property Name="testName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="idStatus" Type="int" Nullable="false" />
     <Property Name="idPhase" Type="int" Nullable="false" />
-    <Property Name="executionTime" Type="time" Precision="7" Nullable="false" />
-    <Property Name="executionDate" Type="date" Nullable="false" />
-    <Property Name="idProject" Type="int" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="executionTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="executionDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Phase">
     <Key>
@@ -57,7 +57,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Execution_Project">
-    <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
     <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Project">

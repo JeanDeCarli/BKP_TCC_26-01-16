@@ -28,17 +28,17 @@ namespace Framework
             string testName = testsFullName[2];
             int idStatus = db.getStatusIdByName(context.Result.Status.ToString());
 
-            //int idPhase = 
+            int idPhase = 1;      //get the idPhase by the XML  setted by the addin
 
-            TimeSpan executionTime = this.stopTimer();
+            string executionTime = this.stopTimer();
             DateTime executionDate = System.DateTime.Now;
-            int idProject = db.getProjectsIdByName(testsFullName[0]);
-            
+            int idProject = 1;    //get the idProject by the XML  setted by the addin
+
             // set the information in the Execution Model
             currentTestResult.testName = testName;
             currentTestResult.idStatus = idStatus;
 
-            //currentTestResult.idPhase = ...
+            currentTestResult.idPhase = idPhase;
 
             currentTestResult.executionTime = executionTime;
             currentTestResult.executionDate = executionDate;
@@ -46,7 +46,6 @@ namespace Framework
 
             // call the method to save the Execution Object
             db.SaveExecution(currentTestResult);
-            //System.Diagnostics.Debug.Write(currentTestResult.testsName + " " + currentTestResult.testsStatus + " " + currentTestResult.testsTime + " " + currentTestResult.testsDate);
         }
 
         public void startTimer()
@@ -54,10 +53,19 @@ namespace Framework
             stopWatch.Start();
         }
 
-        private TimeSpan stopTimer()
+        private string stopTimer()
         {
             stopWatch.Stop();
-            return stopWatch.Elapsed;
+
+            string days = stopWatch.Elapsed.Days.ToString();
+            string hours = stopWatch.Elapsed.Hours.ToString();
+            string minutes = stopWatch.Elapsed.Minutes.ToString();
+            string seconds = stopWatch.Elapsed.Seconds.ToString();
+            string milliseconds = stopWatch.Elapsed.Milliseconds.ToString();
+
+            string fullTime = days + ":" + hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+
+            return fullTime;
         }
     }
 }

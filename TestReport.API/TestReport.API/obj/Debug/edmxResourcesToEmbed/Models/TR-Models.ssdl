@@ -11,12 +11,12 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="testName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="idStatus" Type="int" Nullable="false" />
     <Property Name="idPhase" Type="int" Nullable="false" />
     <Property Name="idProject" Type="int" Nullable="false" />
-    <Property Name="executionTime" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="executionTime" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="executionDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Phase">

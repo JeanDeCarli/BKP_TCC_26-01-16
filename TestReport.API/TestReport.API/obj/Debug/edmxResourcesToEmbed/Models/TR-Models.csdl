@@ -76,12 +76,12 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="testName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="idStatus" Type="Int32" Nullable="false" />
     <Property Name="idPhase" Type="Int32" Nullable="false" />
     <Property Name="idProject" Type="Int32" Nullable="false" />
-    <Property Name="executionTime" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="executionTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="executionDate" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Phase" Relationship="TestReportModel.FK_Execution_Phase" FromRole="Execution" ToRole="Phase" />
     <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Execution_Project" FromRole="Execution" ToRole="Project" />

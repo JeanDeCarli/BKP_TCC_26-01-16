@@ -9,19 +9,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Executions">
-      <EntityTypeMapping TypeName="TestReportModel.Execution">
-        <MappingFragment StoreEntitySet="Execution">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="testName" ColumnName="testName" />
-          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
-          <ScalarProperty Name="idPhase" ColumnName="idPhase" />
-          <ScalarProperty Name="executionTime" ColumnName="executionTime" />
-          <ScalarProperty Name="executionDate" ColumnName="executionDate" />
-          <ScalarProperty Name="idProject" ColumnName="idProject" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Phases">
       <EntityTypeMapping TypeName="TestReportModel.Phase">
         <MappingFragment StoreEntitySet="Phase">
@@ -47,6 +34,19 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Executions">
+      <EntityTypeMapping TypeName="TestReportModel.Execution">
+        <MappingFragment StoreEntitySet="Execution">
+          <ScalarProperty Name="executionDate" ColumnName="executionDate" />
+          <ScalarProperty Name="executionTime" ColumnName="executionTime" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idPhase" ColumnName="idPhase" />
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+          <ScalarProperty Name="testName" ColumnName="testName" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -16,12 +16,12 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="testName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idStatus" Type="int" Nullable="false" />
           <Property Name="idPhase" Type="int" Nullable="false" />
           <Property Name="idProject" Type="int" Nullable="false" />
-          <Property Name="executionTime" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="executionTime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="executionDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Phase">
@@ -156,7 +156,7 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="Execution" EntitySet="Execution" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Status">
           <Key>
             <PropertyRef Name="id" />
@@ -200,12 +200,12 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="testName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idStatus" Type="Int32" Nullable="false" />
           <Property Name="idPhase" Type="Int32" Nullable="false" />
           <Property Name="idProject" Type="Int32" Nullable="false" />
-          <Property Name="executionTime" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="executionTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="executionDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Phase" Relationship="TestReportModel.FK_Execution_Phase" FromRole="Execution" ToRole="Phase" />
           <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Execution_Project" FromRole="Execution" ToRole="Project" />
@@ -247,7 +247,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

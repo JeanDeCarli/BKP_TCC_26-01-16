@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="TestReportModel.Company" Width="1.5" PointX="0.5" PointY="4.75" />
         <EntityTypeShape EntityType="TestReportModel.Project" Width="1.5" PointX="3" PointY="4.75" />
         <AssociationConnector Association="TestReportModel.FK_Project_Company" />
-        <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="3.125" PointY="1.375" />
+        <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="3.125" PointY="1.5" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Phase" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Project" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Status" />
