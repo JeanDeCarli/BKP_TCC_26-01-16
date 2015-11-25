@@ -11,7 +11,10 @@ namespace TestReport.API.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [KnownType(typeof(Company))]
+    [KnownType(typeof(Execution))]
     public partial class Project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +27,8 @@ namespace TestReport.API.Models
         public string name { get; set; }
         public int idCompany { get; set; }
     
-        public virtual Company Company { get; set; }
+        public Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Execution> Execution { get; set; }
+        public ICollection<Execution> Execution { get; set; }
     }
 }
