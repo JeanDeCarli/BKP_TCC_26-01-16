@@ -35,6 +35,18 @@ namespace TestReport.API.Controllers
             return Ok(status);
         }
 
+        [ResponseType(typeof(Status))]
+        public IHttpActionResult GetStatusByName(string name)
+        {
+            var status = db.Status.Where(s => s.name == name);
+            if (status == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(status);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

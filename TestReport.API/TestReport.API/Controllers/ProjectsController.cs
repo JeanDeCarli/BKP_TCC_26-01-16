@@ -35,6 +35,18 @@ namespace TestReport.API.Controllers
             return Ok(project);
         }
 
+        [ResponseType(typeof(Project))]
+        public IHttpActionResult GetProjectByName(string name)
+        {
+            var project = db.Project.Where(pr => pr.name == name);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(project);
+        }
+
         // PUT: api/Projects/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProject(int id, Project project)

@@ -19,10 +19,12 @@ C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.framework.dll
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.util.dll
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\RestSharp.dll
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\Framework.pdb
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\EntityFramework.xml
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\EntityFramework.SqlServer.xml
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\nunit.framework.xml
+C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\bin\Debug\RestSharp.xml
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.csprojResolveAssemblyReference.cache
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.dll
 C:\DotNetProjects\TestReport\TestReport.Framework\AutomatedTests\obj\Debug\AutomatedTests.pdb

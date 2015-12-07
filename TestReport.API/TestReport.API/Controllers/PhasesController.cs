@@ -35,6 +35,19 @@ namespace TestReport.API.Controllers
             return Ok(phase);
         }
 
+        [ResponseType(typeof(Phase))]
+        public IHttpActionResult GetCurrentPhase(int current)
+        {
+            DateTime today = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd"));
+            var phase = db.Phase.Where(ps => ps.startDate >= today).OrderBy(ps => ps.startDate).Take(1);
+            if (phase == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(phase);
+        }
+
         // PUT: api/Phases/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPhase(int id, Phase phase)

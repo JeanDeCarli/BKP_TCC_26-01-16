@@ -1,4 +1,5 @@
-﻿using Framework.Models;
+﻿using Framework.APIsClient;
+using Framework.Models;
 using NUnit;
 using NUnit.Framework;
 using System;
@@ -7,7 +8,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Framework.DataBaseMethods;
 
 namespace Framework
 {
@@ -20,32 +20,21 @@ namespace Framework
             // initialize objects
             var context =  TestContext.CurrentContext;
             var currentTestResult = new Execution();
-            var db = new DbMethods();
+            var api = new APIsClientMothods();
 
             // get the runned test`s values
             string[] testsFullName = context.Test.FullName.Split('.');
 
-            string testName = testsFullName[2];
-            int idStatus = db.getStatusIdByName(context.Result.Status.ToString());
+            currentTestResult.testName = testsFullName[2];
+            currentTestResult.idStatus = api.GetIdStatus(context.Result.Status.ToString());
+            currentTestResult.idPhase = api.GetCurrentIdPhase();
 
-            int idPhase = 1;      //get the idPhase by the XML  setted by the addin
-
-            string executionTime = this.stopTimer();
-            DateTime executionDate = System.DateTime.Now;
-            int idProject = 1;    //get the idProject by the XML  setted by the addin
-
-            // set the information in the Execution Model
-            currentTestResult.testName = testName;
-            currentTestResult.idStatus = idStatus;
-
-            currentTestResult.idPhase = idPhase;
-
-            currentTestResult.executionTime = executionTime;
-            currentTestResult.executionDate = executionDate;
-            currentTestResult.idProject = idProject;
+            currentTestResult.executionTime = this.stopTimer();
+            currentTestResult.executionDate = System.DateTime.Now;
+            currentTestResult.idProject = api.GetIdProject(testsFullName[0]);
 
             // call the method to save the Execution Object
-            db.SaveExecution(currentTestResult);
+            api.PostExecution(currentTestResult);
         }
 
         public void startTimer()
