@@ -34,7 +34,22 @@ namespace TestReport.API.Controllers
 
             return Ok(execution);
         }
-        
+
+        // POST Execution
+        [ResponseType(typeof(Execution))]
+        public IHttpActionResult PostExecution(Execution execution)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Execution.Add(execution);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = execution.id }, execution);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

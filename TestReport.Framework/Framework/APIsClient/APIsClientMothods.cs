@@ -1,8 +1,11 @@
 ﻿using Framework.Models;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,36 +13,81 @@ namespace Framework.APIsClient
 {
     public class APIsClientMothods
     {
-        RestClient client = new RestClient("http://localhost:4319/");
+        private static string URL = "http://localhost:4319/api/";
 
-        public int GetIdStatus(string st)
+        public int  GetIdStatus(string st)
         {
-            var request = new RestRequest(string.Format("api/status/?name={0}", st), Method.GET);
-            Status queryResult = client.Execute<Status>(request).Data;
-            return queryResult.id;
+            int statusId = -1;
+
+            WebRequest request = WebRequest.Create(string.Concat(URL, string.Format("status/?name={0}", st)));
+
+            using (var resp = (HttpWebResponse)request.GetResponse())
+            {
+                using (var reader = new StreamReader(resp.GetResponseStream()))
+                {
+                    string objText = reader.ReadToEnd();
+                    var stat = JsonConvert.DeserializeObject<List<Status>>(objText);
+                    statusId = stat[0].id;
+                }
+            }
+            return statusId;
         }
 
         public int GetCurrentIdPhase()
         {
-            var request = new RestRequest("api/phases/?current=1", Method.GET);
-            Phase queryResult = client.Execute<Phase>(request).Data;
-            return queryResult.id;
+            int phaseId = -1;
+
+            WebRequest request = WebRequest.Create(string.Concat(URL, "phases/?current=1"));
+
+            using (var resp = (HttpWebResponse)request.GetResponse())
+            {
+                using (var reader = new StreamReader(resp.GetResponseStream()))
+                {
+                    string objText = reader.ReadToEnd();
+                    var phase = JsonConvert.DeserializeObject<List<Phase>>(objText);
+                    phaseId = phase[0].id;
+                }
+            }
+            return phaseId;
         }
 
         public int GetIdProject(string pr)
         {
-            pr = pr.Replace(" ", "+");
-            var request = new RestRequest(string.Format("api/projects/?name={0}", pr), Method.GET);
-            Project queryResult = client.Execute<Project>(request).Data;
-            return queryResult.id;
+            int projectId = -1;
+
+            WebRequest request = WebRequest.Create(string.Concat(URL, string.Format("projects/?name={0}", pr)));
+
+            using (var resp = (HttpWebResponse)request.GetResponse())
+            {
+                using (var reader = new StreamReader(resp.GetResponseStream()))
+                {
+                    string objText = reader.ReadToEnd();
+                    var proj = JsonConvert.DeserializeObject<List<Project>>(objText);
+                    projectId = proj[0].id;
+                }
+            }
+            return projectId;
         }
 
         public void PostExecution(Execution exec)
         {
-            var request = new RestRequest("api/executions/", Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            request.AddBody(exec);
-            client.Execute(request);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(string.Concat(URL, "executions"));
+            httpWebRequest.ContentType = "application/json; charset=utf-8";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(exec);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
         }
     }
 }
