@@ -30,7 +30,15 @@ namespace Framework.APIsClient
                     statusId = stat[0].id;
                 }
             }
-            return statusId;
+            if (statusId != -1)
+            {
+                return statusId;
+            }
+            else
+            {
+                throw new Exception("Status not find");
+            }
+            
         }
 
         public int GetCurrentIdPhase()
@@ -48,7 +56,15 @@ namespace Framework.APIsClient
                     phaseId = phase[0].id;
                 }
             }
-            return phaseId;
+
+            if (phaseId != -1)
+            {
+                return phaseId;
+            }
+            else
+            {
+                throw new Exception("Phase not find");
+            }
         }
 
         public int GetIdProject(string pr)
@@ -66,7 +82,15 @@ namespace Framework.APIsClient
                     projectId = proj[0].id;
                 }
             }
-            return projectId;
+
+            if (projectId != -1)
+            {
+                return projectId;
+            }
+            else
+            {
+                throw new Exception("Project not find");
+            }
         }
 
         public void PostExecution(Execution exec)
