@@ -21,7 +21,7 @@ namespace TestReport.API.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection2", throwIfV1Schema: false)
         {
         }
         

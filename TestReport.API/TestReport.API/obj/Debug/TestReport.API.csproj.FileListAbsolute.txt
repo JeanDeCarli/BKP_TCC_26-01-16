@@ -97,6 +97,7 @@ C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.AspNet.
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.AspNet.Identity.Owin.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.Cors.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.Security.Cookies.dll
@@ -110,6 +111,7 @@ C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Web.Inf
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Newtonsoft.Json.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Owin.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Net.Http.Formatting.dll
+C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Cors.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Helpers.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Http.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Http.Owin.dll
@@ -122,6 +124,7 @@ C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.WebPag
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.WebPages.Razor.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\WebGrease.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.Cors.xml
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Newtonsoft.Json.xml
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Net.Http.Formatting.xml
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Helpers.xml
@@ -151,4 +154,3 @@ C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.Se
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Http.Owin.xml
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\obj\Debug\TestReport.API.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\obj\Debug\TestReport.API.pdb
-C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\obj\Debug\TestReport.API.csprojResolveAssemblyReference.cache
