@@ -154,3 +154,4 @@ C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\Microsoft.Owin.Se
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\bin\System.Web.Http.Owin.xml
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\obj\Debug\TestReport.API.dll
 C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\obj\Debug\TestReport.API.pdb
+C:\DotNetProjects\TestReport\TestReport.API\TestReport.API\obj\Debug\TestReport.API.csprojResolveAssemblyReference.cache

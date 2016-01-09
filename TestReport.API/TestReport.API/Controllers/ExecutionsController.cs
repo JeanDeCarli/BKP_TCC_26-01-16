@@ -12,6 +12,7 @@ using TestReport.API.Models;
 
 namespace TestReport.API.Controllers
 {
+    [Authorize]
     public class ExecutionsController : ApiController
     {
         private TestReportEntities db = new TestReportEntities();
