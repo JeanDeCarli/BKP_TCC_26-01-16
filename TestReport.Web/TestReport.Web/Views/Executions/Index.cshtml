@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TestReport.Web.Models.Execution>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.testName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.executionTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.executionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phase.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Project.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.testName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.executionTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.executionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phase.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

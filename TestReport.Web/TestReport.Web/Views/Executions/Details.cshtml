@@ -1,0 +1,66 @@
+﻿@model TestReport.Web.Models.Execution
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Execution</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.testName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.testName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.executionTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.executionTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.executionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.executionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phase.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phase.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
