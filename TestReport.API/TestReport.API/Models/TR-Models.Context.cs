@@ -25,10 +25,10 @@ namespace TestReport.API.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Phase> Phase { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Project> Project { get; set; }
         public virtual DbSet<Execution> Execution { get; set; }
+        public virtual DbSet<Phase> Phase { get; set; }
     }
 }

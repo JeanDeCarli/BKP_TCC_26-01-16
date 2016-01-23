@@ -13,6 +13,14 @@ namespace Framework
 {
     public class FrameworkMethods
     {
+        APIsClientMothods api = new APIsClientMothods();
+
+        public FrameworkMethods(string user, string pass)
+        {
+            api.setUser(user);
+            api.setPass(pass);
+        }
+
         private Stopwatch stopWatch = new Stopwatch();
 
         public void CaptureTestsInformation()
@@ -22,18 +30,19 @@ namespace Framework
                 // initialize objects
                 var context = TestContext.CurrentContext;
                 var currentTestResult = new Execution();
-                var api = new APIsClientMothods();
+                
 
                 // get the runned test`s values
                 string[] testsFullName = context.Test.FullName.Split('.');
 
                 currentTestResult.testName = testsFullName[2];
                 currentTestResult.idStatus = api.GetIdStatus(context.Result.Status.ToString());
-                currentTestResult.idPhase = api.GetCurrentIdPhase();
+                currentTestResult.idProject = api.GetIdProject(testsFullName[0]);
+                currentTestResult.idPhase = api.GetCurrentIdPhase(currentTestResult.idPhase);
 
                 currentTestResult.executionTime = this.stopTimer();
                 currentTestResult.executionDate = System.DateTime.Now;
-                currentTestResult.idProject = api.GetIdProject(testsFullName[0]);
+                
 
                 // call the method to save the Execution Object
                 api.PostExecution(currentTestResult);

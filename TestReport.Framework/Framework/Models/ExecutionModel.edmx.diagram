@@ -6,14 +6,15 @@
     <edmx:Diagrams>
       <Diagram DiagramId="da5305a03f5746caa3e742292f4f6ed4" Name="Diagram1">
         <EntityTypeShape EntityType="TestReportModel.Company" Width="1.5" PointX="2.375" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestReportModel.Phase" Width="1.5" PointX="7.625" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TestReportModel.Project" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TestReportModel.Status" Width="1.5" PointX="2.375" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="TestReportModel.FK_Project_Company" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="5.25" PointY="1" />
-        <AssociationConnector Association="TestReportModel.FK_Execution_Phase" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Project" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Status" />
+        <EntityTypeShape EntityType="TestReportModel.Phase" Width="1.5" PointX="8.25" PointY="3.75" />
+        <AssociationConnector Association="TestReportModel.FK_Execution_Phase" />
+        <AssociationConnector Association="TestReportModel.FK_Phase_Project" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

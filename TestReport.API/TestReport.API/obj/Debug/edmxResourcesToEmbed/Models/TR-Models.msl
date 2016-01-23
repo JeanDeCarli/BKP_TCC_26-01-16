@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TestReportModelStoreContainer" CdmEntityContainer="TestReportEntities">
-    <EntitySetMapping Name="Phase">
-      <EntityTypeMapping TypeName="TestReportModel.Phase">
-        <MappingFragment StoreEntitySet="Phase">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="startDate" ColumnName="startDate" />
-          <ScalarProperty Name="endDate" ColumnName="endDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Status">
       <EntityTypeMapping TypeName="TestReportModel.Status">
         <MappingFragment StoreEntitySet="Status">
@@ -46,6 +36,17 @@
           <ScalarProperty Name="idPhase" ColumnName="idPhase" />
           <ScalarProperty Name="idStatus" ColumnName="idStatus" />
           <ScalarProperty Name="testName" ColumnName="testName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phase">
+      <EntityTypeMapping TypeName="TestReportModel.Phase">
+        <MappingFragment StoreEntitySet="Phase">
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

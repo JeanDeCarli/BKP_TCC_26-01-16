@@ -378,6 +378,8 @@
           <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="endDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Executions" Relationship="Self.FK_Execution_Phase" FromRole="Phase" ToRole="Execution" />
+          <NavigationProperty Name="Project" Relationship="TestReportModel.FK_Phase_Project" FromRole="Phase" ToRole="Project" />
+          <Property Name="Project_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -389,6 +391,7 @@
           <NavigationProperty Name="Company" Relationship="Self.FK_Project_Company" FromRole="Project" ToRole="Company" />
           <NavigationProperty Name="Executions" Relationship="Self.FK_Execution_Project" FromRole="Project" ToRole="Execution" />
           <NavigationProperty Name="UserProjects" Relationship="Self.FK_UserProject_Project" FromRole="Project" ToRole="UserProject" />
+          <NavigationProperty Name="Phases" Relationship="TestReportModel.FK_Phase_Project" FromRole="Project" ToRole="Phase" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -562,7 +565,23 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Phase_Project" Association="TestReportModel.FK_Phase_Project">
+            <End Role="Phase" EntitySet="Phases" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Phase_Project">
+          <End Type="TestReportModel.Phase" Role="Phase" Multiplicity="*" />
+          <End Type="TestReportModel.Project" Role="Project" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Phase">
+              <PropertyRef Name="Project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

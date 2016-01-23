@@ -9,21 +9,22 @@
         <EntityTypeShape EntityType="TestReportModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TestReportModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TestReportModel.AspNetUser" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestReportModel.Company" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestReportModel.Phase" Width="1.5" PointX="6" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestReportModel.Project" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestReportModel.Status" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestReportModel.Company" Width="1.5" PointX="4" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestReportModel.Execution" Width="1.5" PointX="8.375" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestReportModel.Phase" Width="1.5" PointX="4" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestReportModel.Project" Width="1.5" PointX="8.375" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestReportModel.Status" Width="1.5" PointX="4" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TestReportModel.UserProject" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="TestReportModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="TestReportModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="TestReportModel.FK_UserProject_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="TestReportModel.FK_Project_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="TestReportModel.FK_Execution_Phase" ManuallyRouted="false" />
+        <AssociationConnector Association="TestReportModel.FK_Execution_Phase" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="TestReportModel.FK_Execution_Project" ManuallyRouted="false" />
         <AssociationConnector Association="TestReportModel.FK_Execution_Status" ManuallyRouted="false" />
         <AssociationConnector Association="TestReportModel.FK_UserProject_Project" ManuallyRouted="false" />
         <AssociationConnector Association="TestReportModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="TestReportModel.FK_Phase_Project" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

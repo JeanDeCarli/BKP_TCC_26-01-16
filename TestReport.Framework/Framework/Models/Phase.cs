@@ -24,8 +24,10 @@ namespace Framework.Models
         public string name { get; set; }
         public System.DateTime startDate { get; set; }
         public System.DateTime endDate { get; set; }
+        public Nullable<int> idProject { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Execution> Executions { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

@@ -11,11 +11,7 @@ namespace TestReport.API.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    [KnownType(typeof(Phase))]
-    [KnownType(typeof(Project))]
-    [KnownType(typeof(Status))]
+    
     public partial class Execution
     {
         public int id { get; set; }
@@ -26,8 +22,8 @@ namespace TestReport.API.Models
         public string executionTime { get; set; }
         public System.DateTime executionDate { get; set; }
     
-        public Phase Phase { get; set; }
         public Project Project { get; set; }
         public Status Status { get; set; }
+        public Phase Phase { get; set; }
     }
 }

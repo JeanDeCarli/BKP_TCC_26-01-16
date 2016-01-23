@@ -19,6 +19,7 @@ namespace TestReport.Web.Models
         {
             this.Executions = new HashSet<Execution>();
             this.UserProjects = new HashSet<UserProject>();
+            this.Phases = new HashSet<Phase>();
         }
     
         public int id { get; set; }
@@ -30,5 +31,7 @@ namespace TestReport.Web.Models
         public virtual ICollection<Execution> Executions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserProject> UserProjects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Phase> Phases { get; set; }
     }
 }

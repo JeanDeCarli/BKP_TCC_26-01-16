@@ -11,9 +11,7 @@ namespace TestReport.API.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    [KnownType(typeof(Execution))]
+    
     public partial class Phase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,8 +24,10 @@ namespace TestReport.API.Models
         public string name { get; set; }
         public System.DateTime startDate { get; set; }
         public System.DateTime endDate { get; set; }
+        public Nullable<int> idProject { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Execution> Execution { get; set; }
+        public Project Project { get; set; }
     }
 }

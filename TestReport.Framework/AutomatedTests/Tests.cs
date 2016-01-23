@@ -12,7 +12,7 @@ namespace AutomatedTests
 {
     public class Tests
     {
-        private FrameworkMethods fm = new FrameworkMethods();
+        private FrameworkMethods fm = new FrameworkMethods("test1@test.com", "Password1!");
 
         #region SetUP and TearDown
         [SetUp]

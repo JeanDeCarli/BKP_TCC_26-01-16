@@ -26,9 +26,9 @@ namespace Framework.Models
         }
     
         public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Phase> Phases { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Execution> Executions { get; set; }
+        public virtual DbSet<Phase> Phases { get; set; }
     }
 }

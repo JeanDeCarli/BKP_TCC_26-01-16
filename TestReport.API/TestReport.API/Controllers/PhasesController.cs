@@ -37,10 +37,13 @@ namespace TestReport.API.Controllers
         }
 
         [ResponseType(typeof(Phase))]
-        public IHttpActionResult GetCurrentPhase(int current)
+        public IHttpActionResult GetCurrentPhase(int idProject)
         {
             DateTime today = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd"));
-            var phase = db.Phase.Where(ps => ps.startDate >= today).OrderBy(ps => ps.startDate).Take(1);
+
+            var phase = db.Phase.Where(ps => ps.idProject == idProject 
+            && (today >= ps.startDate && today <= ps.endDate));
+
             if (phase == null)
             {
                 return NotFound();

@@ -18,6 +18,7 @@ namespace Framework.Models
         public Project()
         {
             this.Executions = new HashSet<Execution>();
+            this.Phases = new HashSet<Phase>();
         }
     
         public int id { get; set; }
@@ -27,5 +28,7 @@ namespace Framework.Models
         public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Execution> Executions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Phase> Phases { get; set; }
     }
 }

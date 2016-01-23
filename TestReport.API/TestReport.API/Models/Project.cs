@@ -11,16 +11,14 @@ namespace TestReport.API.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    [KnownType(typeof(Company))]
-    [KnownType(typeof(Execution))]
+    
     public partial class Project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Project()
         {
             this.Execution = new HashSet<Execution>();
+            this.Phase = new HashSet<Phase>();
         }
     
         public int id { get; set; }
@@ -30,5 +28,7 @@ namespace TestReport.API.Models
         public Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Execution> Execution { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public ICollection<Phase> Phase { get; set; }
     }
 }

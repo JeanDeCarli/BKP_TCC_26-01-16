@@ -27,6 +27,7 @@
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
     <Property Name="endDate" Type="date" Nullable="false" />
+    <Property Name="idProject" Type="int" />
   </EntityType>
   <EntityType Name="Project">
     <Key>
@@ -80,6 +81,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Phase_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+    <End Role="Phase" Type="Self.Phase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Phase">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Project_Company">
     <End Role="Company" Type="Self.Company" Multiplicity="1" />
     <End Role="Project" Type="Self.Project" Multiplicity="*" />
@@ -109,6 +122,10 @@
     <AssociationSet Name="FK_Execution_Status" Association="Self.FK_Execution_Status">
       <End Role="Status" EntitySet="Status" />
       <End Role="Execution" EntitySet="Execution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Phase_Project" Association="Self.FK_Phase_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Phase" EntitySet="Phase" />
     </AssociationSet>
     <AssociationSet Name="FK_Project_Company" Association="Self.FK_Project_Company">
       <End Role="Company" EntitySet="Company" />
